@@ -16,7 +16,10 @@ sudo apt-get install -y libdb4.8-dev libdb4.8++-dev
 sudo apt-get install -y build-essential autoconf libtool pkg-config libboost-all-dev libssl-dev libevent-dev doxygen libzmqpp-dev
 
 # Descargamos ultima versión de Bitcoin
-sudo git clone https://github.com/bitcoin/bitcoin.git /lib/bitcoin
+# sudo git clone https://github.com/bitcoin/bitcoin.git /lib/bitcoin
+wget https://github.com/bitcoin/bitcoin/archive/v0.18.0.tar.gz
+tar -xzvf v0.18.0.tar.gz
+sudo mv bitcoin-0.18.0 /lib/bitcoin
 
 # Carpetas de uso: (MIRAR)
 # /lib/bitcoin -> Código y ejecutables de Bitcoin
