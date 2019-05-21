@@ -1,1 +1,1 @@
-# bitcoin
+Manual para instalar  nodo de Bitcoin y Lightning Network
