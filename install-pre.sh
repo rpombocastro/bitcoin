@@ -4,8 +4,12 @@ sudo apt-get update && sudo apt-get upgrade
 
 sudo groupadd bitcoin
 sudo useradd -m -g bitcoin -s /bin/bash bitcoin
+
 # Establecemos contraseña para bitcoin
-sudo passwd bitcoin
+# sudo passwd bitcoin
+
+# Deshabilitamos cuenta para que no se pueda autentificar el usuario bitcoin
+sudo passwd --lock bitcoin
 
 # Configuramos seguridad
 
