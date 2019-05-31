@@ -1,0 +1,25 @@
+[Unit]
+Description=LND Lightning Daemon
+# Requires=bitcoind.service
+After=getpublicip.service
+After=bitcoind.service
+
+StartLimitIntervalSec=0
+
+[Service]
+EnvironmentFile=/run/publicip
+
+ExecStart=/usr/bin/lnd --externalip=${PUBLICIP}
+PIDFile=/run/bitcoind/lnd.pid
+
+User=bitcoin
+Group=bitcoin
+
+Type=simple
+# KillMode=process
+# TimeoutSec=180
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

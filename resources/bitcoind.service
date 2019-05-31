@@ -10,21 +10,32 @@
 
 [Unit]
 Description=Bitcoin daemon
-After=network.target
+After=network.target getpublicip.service
+
+StartLimitBurst=5
+StartLimitIntervalSec=60
 
 [Service]
+EnvironmentFile=/run/publicip
+
 ExecStart=/usr/bin/bitcoind -daemon \
                             -pid=/run/bitcoind/bitcoind.pid \
                             -conf=/etc/bitcoin/bitcoin.conf \
                             -datadir=/var/lib/bitcoind \
-							-walletdir =/var/lib/bitcoind
+							-walletdir=/var/lib/bitcoind \
+							-externalip=${PUBLICIP}
 
+							
+# bitcoind -daemon -pid=/run/bitcoind/bitcoind.pid -conf=/etc/bitcoin/bitcoin.conf -datadir=/var/lib/bitcoind -walletdir=/var/lib/bitcoind
+							
 # Process management
 ####################
 
 Type=forking
 PIDFile=/run/bitcoind/bitcoind.pid
-Restart=on-failure
+
+Restart=always
+RestartSec=10
 
 # Directory creation and permissions
 ####################################
