@@ -12,8 +12,7 @@
 Description=Bitcoin daemon
 After=network.target getpublicip.service
 
-StartLimitBurst=5
-StartLimitIntervalSec=60
+StartLimitIntervalSec=0
 
 [Service]
 EnvironmentFile=/run/publicip
@@ -30,12 +29,12 @@ ExecStart=/usr/bin/bitcoind -daemon \
 							
 # Process management
 ####################
+#PIDFile=/run/bitcoind/bitcoind.pid
 
 Type=forking
-PIDFile=/run/bitcoind/bitcoind.pid
 
 Restart=always
-RestartSec=10
+RestartSec=360
 
 # Directory creation and permissions
 ####################################

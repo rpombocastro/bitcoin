@@ -1,8 +1,7 @@
 [Unit]
 Description=LND Lightning Daemon
 # Requires=bitcoind.service
-After=getpublicip.service
-After=bitcoind.service
+After=getpublicip.service bitcoind.service
 
 StartLimitIntervalSec=0
 
@@ -16,10 +15,8 @@ User=bitcoin
 Group=bitcoin
 
 Type=simple
-# KillMode=process
-# TimeoutSec=180
 Restart=always
-RestartSec=60
+RestartSec=420
 
 [Install]
 WantedBy=multi-user.target

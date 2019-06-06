@@ -1,5 +1,5 @@
 #Instalamos git
-sudo apt-get install git
+# sudo apt-get install -y git
 
 #Instalamos Go
 echo "Instalamos Go"
